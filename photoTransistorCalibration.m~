@@ -1,0 +1,15 @@
+% using 10K resistor, full spectrum light, 1-bit A/D on Feather M0,
+% Thorlabs PM100D with S121C light sensor
+% ambient light: thor: 15uW, 20.81 uW/cm2, ALPS: 1/1024
+lightDistance = [18,15,12,9,6,3,0];
+photoAD = [50,60,102,166,240,440,580];
+thor_mW = [.381,.554,.766,1.057,1.424,2.73,3.6];
+thor_mWcm2 = [.537,.781,1.080,1.491,2.008,3.86,5.11];
+
+figure;
+plot(thor_mWcm2,photoAD,'k.','markerSize',25);
+grid on;
+xlabel('thor_mWcm2 (mW/cm^2)');
+ylabel('photoAD (');
+
+p = polyfit(thor_mWcm2,photoAD,1)
